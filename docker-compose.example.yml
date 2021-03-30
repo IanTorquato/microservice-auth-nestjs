@@ -1,0 +1,36 @@
+version: '3.4'
+
+services:
+  name_service_postgres:
+    container_name: postgres-microservice
+    image: postgres:13-alpine
+    environment:
+      POSTGRES_USER: "user"
+      POSTGRES_PASSWORD: "password"
+      POSTGRES_DB: "database"
+    volumes:
+        - ../postgres-data/:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+      
+  auth_service_name:
+    container_name: auth-service
+    build: .
+    image: auth_service_image_name
+    command: "yarn start:container"
+    volumes:
+      - .:/home/node/app
+    ports:
+      - "3000:3000"
+      
+  user_service_name:
+    container_name: user-service
+    build: ../nestjs-microservice-test-user/
+    image: user_service_image_name
+    command: "yarn start:container"
+    volumes:
+      - ../nestjs-microservice-test-user/:/home/node/app
+    depends_on:
+      - name_service_postgres
+    ports:
+      - "4000:4000"
