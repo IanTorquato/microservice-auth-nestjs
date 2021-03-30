@@ -1,6 +1,4 @@
-import { ConfigService } from '@nestjs/config';
-
-const jwtSecret = new ConfigService().get<string>('JWT_SECRET');
-const jwtExpiresIn = new ConfigService().get<string>('JWT_EXPIRES_IN');
+const jwtSecret = process.env.JWT_SECRET;
+const jwtExpiresIn = process.env.JWT_EXPIRES_IN;
 
 export { jwtSecret, jwtExpiresIn };
