@@ -1,6 +1,9 @@
+import { config } from 'dotenv';
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { Transport } from '@nestjs/microservices';
+
+config();
 
 import { AppModule } from './app.module';
 
@@ -19,7 +22,7 @@ async function bootstrap() {
   await app.startAllMicroservicesAsync();
 
   await app.listen(PORT, () =>
-    console.log(`Application running on port ${PORT}`),
+    Logger.log(`Application-Auth running on port ${PORT}`),
   );
 
   Logger.log('Auth microservice running');
