@@ -36,7 +36,8 @@ export class AuthService {
         )
         .toPromise();
 
-      if (compareSync(password, user?.password)) {
+      // if (user && password === user.password) {
+      if (user && compareSync(password, user.password)) {
         return user;
       }
 
@@ -54,5 +55,9 @@ export class AuthService {
       userId: user.id,
       accessToken: this.jwtService.sign(payload),
     };
+  }
+
+  validateToken(jwt: string) {
+    return this.jwtService.verify(jwt);
   }
 }
