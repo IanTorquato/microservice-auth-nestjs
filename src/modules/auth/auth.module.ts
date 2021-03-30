@@ -14,8 +14,8 @@ import { jwtExpiresIn, jwtSecret } from './constants';
         name: 'USER_CLIENT',
         transport: Transport.TCP,
         options: {
-          host: 'localhost',
-          port: 4010,
+          host: 'user-service',
+          port: Number(process.env.CONNECTION_USER_SERVICE_PORT),
         },
       },
     ]),
