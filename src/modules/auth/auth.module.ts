@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { ClientsModule, Transport } from '@nestjs/microservices';
-import { ConfigModule } from '@nestjs/config';
 
 import { AuthService } from './auth.service';
 import { LocalStrategy } from './local.strategy';
@@ -10,7 +9,6 @@ import { jwtExpiresIn, jwtSecret } from './constants';
 
 @Module({
   imports: [
-    ConfigModule,
     ClientsModule.register([
       {
         name: 'USER_CLIENT',
