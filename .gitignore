@@ -1,5 +1,6 @@
 dist
 node_modules
-yarn.lock
+
 .env
 docker-compose.yml
+yarn.lock

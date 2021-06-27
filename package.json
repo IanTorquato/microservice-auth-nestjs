@@ -1,8 +1,7 @@
 {
-  "name": "nestjs-microservice-test-auth",
+  "name": "microservice-auth-nestjs",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "author": "Ian Torquato",
   "private": true,
   "license": "MIT",
   "scripts": {
